@@ -1,122 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import {useState} from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  
+  const [todos, setTodos] = useState([
+    {id: 1, task: "Completed Lab 11", completed: false},
+    {id: 2, task: "Review JSX Events and State", completed: false},
+  ]);
+
+  const [newTask, setNewTask] = useState("");
+
+  function handleComplete(id: number) {
+    const uodatedTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return {...todo, completed: true};
+      }
+      return todo;
+    });
+    setTodos(updatedTodos);
+  }
+
+  function handleAddTask() {
+    if (newTask.trim() === "") return;
+
+    const newTodo = {
+      id: todos.length + 1,
+      task: newTask,
+      completed: false,
+    };
+
+    setTodos([...todos, newTodo]);
+    setNewTask("");
+  }
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
+    <div style={{fontFamily: "Arial, sans-serif", maxWidth: "500px", margin: "40px auto"}}>
+      <h1>To-Do List</h1>
+
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id} style={{marginBottom: "10px", listStyle: "none"}}>
+            
+            <span style={{textDeoration: todo.completed ? "line-through" : "none", color: todo.completed ? "gray" : "black",}}>
+              {todo.task}
+            </span>
+
+            {!todo.completed && (
+              <button onClick={() => handleComplete(todo.id)} style={{marginLeft: "10px"}}>
+                X
+              </button>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <div style={{marginTop: "20px"}}>
+        <input
+        type="text"
+        placeholder="Enter a new task"
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        style={{padding: "6px", width: "300px"}}
+        />
         <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
+        onClick={handleAddTask}
+        style={{marginLeft: "10px", padding: "6px 12px"}}>
+          Add Task
         </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
