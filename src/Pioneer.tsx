@@ -18,7 +18,7 @@ interface PioneerType {
       <div className="container mt-4">
   
         <button className="btn btn-secondary mb-3" onClick={onBack}>
-          ← Back
+          Back
         </button>
   
         <div className="row">
