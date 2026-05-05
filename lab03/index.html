@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Blog</title>
+  <style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --lime: #e4fdc3;
+      --mint: #8ae2c8;
+      --orange: #e89b6a;
+      --melon: #e2625c;
+    }
+
+    body { font-family: Verdana, sans-serif; background: var(--lime); }
+
+    nav {
+      background-color: var(--melon);
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav h1 { color: white; font-size: 24px; }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    nav ul li a:hover { color: var(--lime); }
+
+    .hero {
+      background-color: var(--mint);
+      padding: 40px;
+      text-align: center;
+    }
+    .hero h2 { font-size: 32px; color: var(--melon); }
+    .hero p { margin-top: 10px; font-size: 16px; }
+
+    .recipes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 30px;
+    }
+
+    .recipe-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+    .recipe-card img { width: 100%; display: block; }
+    .recipe-card .info { padding: 15px; }
+    .recipe-card h3 { color: var(--melon); margin-bottom: 8px; }
+    .recipe-card p { font-size: 14px; color: #555; }
+    .recipe-card .tag {
+      display: inline-block;
+      background: var(--orange);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+
+    footer {
+      background: var(--melon);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      .recipes { grid-template-columns: 1fr; }
+      nav { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <h1>🍴 Food Blog</h1>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Recipes</a></li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <h2>Welcome to My Food Blog</h2>
+    <p>Delicious recipes made simple.</p>
+  </div>
+
+  <div class="recipes">
+    <div class="recipe-card">
+      <img src="images/recipe1.jpg" alt="Recipe 1">
+      <div class="info">
+        <h3>Avocado Toast</h3>
+        <p>A quick and healthy breakfast option for busy mornings.</p>
+        <span class="tag">Breakfast</span>
+      </div>
+    </div>
+    <div class="recipe-card">
+      <img src="images/recipe2.jpg" alt="Recipe 2">
+      <div class="info">
+        <h3>Pasta Primavera</h3>
+        <p>Fresh veggies tossed with pasta in a light olive oil sauce.</p>
+        <span class="tag">Dinner</span>
+      </div>
+    </div>
+    <div class="recipe-card">
+      <img src="images/recipe3.jpg" alt="Recipe 3">
+      <div class="info">
+        <h3>Berry Smoothie</h3>
+        <p>Blended mixed berries with yogurt for a refreshing drink.</p>
+        <span class="tag">Drinks</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>© 2025 Food Blog</footer>
+
+</body>
+</html>

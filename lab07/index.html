@@ -7,29 +7,24 @@
 <body>
 
 <script>
-  // #1 - Log a variable with text
   let favNumber = 7;
   console.log("My favorite number is " + favNumber + ".");
 
-  // #2 - Arrays
   let favoriteFoods = ["pizza", "sushi", "tacos", "ice cream"];
   console.log(favoriteFoods[1]);
   favoriteFoods.push("chocolate");
   console.log(favoriteFoods);
 
-  // #3 - Loop through array
   for (let i = 0; i < favoriteFoods.length; i++) {
     console.log("Favorite Food " + (i + 1) + ": " + favoriteFoods[i]);
   }
 
-  // #4 - Filter array (skip second item)
   for (let i = 0; i < favoriteFoods.length; i++) {
     if (i !== 1) {
       console.log("Favorite Food " + (i + 1) + ": " + favoriteFoods[i]);
     }
   }
 
-  // #5 - Object
   let book = {
     title: "Harry Potter",
     author: "J.K. Rowling",
@@ -43,14 +38,12 @@
     console.log("Sorry, this book is currently checked out.");
   }
 
-  // #6 - While loop (even numbers to 20)
   let x = 2;
   while (x <= 20) {
     console.log(x);
     x += 2;
   }
 
-  // #7 - Dice roll
   let diceRoll = Math.floor(Math.random() * 6) + 1;
   console.log("You rolled: " + diceRoll);
 </script>
